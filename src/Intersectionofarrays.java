@@ -1,3 +1,5 @@
+
+import java.util.Arrays;
 public class Intersectionofarrays {
     public static void main(String[] args) {
         int[] arr1={6,9,8,5,9,2};
