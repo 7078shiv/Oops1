@@ -1,15 +1,46 @@
 package LinkedList;
+class DoubleNode{
+    Node<Integer> head;
+    Node<Integer> tail;
+    DoubleNode(){
+
+    }
+    DoubleNode(Node<Integer> head,Node<Integer> tail){
+        this.head=head;
+        this.tail=tail;
+    }
+}
 public class InsertRecursively {
+
     public static Node<Integer> reverse(Node<Integer> head){
         if(head==null || head.next==null){
             return head;
         }
-        Node<Integer> h=head.next;
+        // first method;
+
+        Node h=head.next;
         Node<Integer> sh=reverse(head.next);
 
         h.next=head;
         head.next=null;
+
         return sh;
+    }
+    public static DoubleNode reverseRbetter(Node<Integer> head){
+        DoubleNode ans;
+        if(head==null || head.next==null){
+            ans=new DoubleNode(head,head);
+          //  ans.head=head;
+          //  ans.tail=head;
+            return ans;
+        }
+        DoubleNode sa=reverseRbetter(head.next);
+        sa.tail.next=head;
+        head.next=null;
+        ans=new DoubleNode();
+        ans.head=sa.head;
+        ans.tail=head;
+        return ans;
     }
     public static Node<Integer> insertRN(Node<Integer> head,int pos,int element){
         int ll=0;
@@ -56,9 +87,11 @@ public class InsertRecursively {
     public static void main(String[] args) {
         Node<Integer> head=createlinklist();
        // Node<Integer> headafterinsertion=insertRN(head,5,55);
-        print(head);
-        Node<Integer>newhead=reverse(head);
+      //  print(head);
+       // Node<Integer>newhead=reverse(head);
         System.out.println("after reversing linkedlist");
-        print(newhead);
+       // print(newhead);
+        DoubleNode ans=reverseRbetter(head);
+        print(ans.head);
     }
 }
