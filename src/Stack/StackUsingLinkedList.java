@@ -40,15 +40,15 @@ public class StackUsingLinkedList<T> {
         return (int) temp.data;
 
     }
-
     public static void main(String[] args) {
         StackUsingLinkedList<Integer> stack=new StackUsingLinkedList<>();
         for(int i=0;i<=5;i++){
             stack.push(i);
         }
-        for(;!stack.isEmpty();){
-            System.out.println(stack.pop());
-        }
+      //  for(;!stack.isEmpty();){
+       //     System.out.println(stack.pop());
+      //  }
+        System.out.println(stack.pop());
         System.out.println(stack.size());
         System.out.println(stack.top());
     }
